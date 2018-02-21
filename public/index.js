@@ -63,24 +63,44 @@ const populateDropdown = function (countries) {
     const capital = document.createElement('li');
     capital.innerText = `Capital City: ${selectedCountry.capital}`;
 
-    const bordersArray = [];
-    selectedCountry.borders.forEach(function (border) {
-      countries.forEach(function (country) {
-        if(country.alpha3Code === border){
-          bordersArray.push(country.name);
-      }
-        return bordersArray;
-    })
-    })
 
-    const borders = document.createElement('li');
-    borders.innerText = "Borders: " + bordersArray;
+
+    // const borders = document.createElement('li');
+    // borders.innerText = "Borders: " + bordersArray;
 
     ul.appendChild(name);
     ul.appendChild(population);
     ul.appendChild(capital);
-    ul.appendChild(borders);
 
+    //
+    // const bordersArray = [];
+    const borderUl = document.getElementById("border-info");
+    borderUl.innerHTML = "";
+    const borders = selectedCountry.borders;
+
+    if (borders.length !== 0){
+      console.log("borders");
+      borderUl.innerText = "Borders:";
+    }
+    borders.forEach(function (border) {
+      countries.forEach(function (country) {
+        if(country.alpha3Code === border){
+          const name = document.createElement('li');
+          name.innerText = `Country name: ${country.name}`
+          const population = document.createElement('li');
+          population.innerText = `Population: ${country.population}`;
+          const capital = document.createElement('li');
+          capital.innerText = `Capital City: ${country.capital}`;
+          const lineBreak = document.createElement('br');
+
+          borderUl.appendChild(name);
+          borderUl.appendChild(population);
+          borderUl.appendChild(capital);
+          borderUl.appendChild(lineBreak);
+
+        }
+      })
+    })
 
     const jsonString = JSON.stringify(selectedCountry);
     localStorage.setItem('last country', jsonString);
