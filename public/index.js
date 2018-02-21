@@ -58,13 +58,27 @@ const populateDropdown = function (countries) {
     const name = document.createElement('li');
     name.innerText = `Country name: ${selectedCountry.name}`
     const population = document.createElement('li');
-    population.innerText = `Population: ${selectedCountry.population}`;
+    population.innerText = `Population ${selectedCountry.population}`;
     const capital = document.createElement('li');
     capital.innerText = `Capital City: ${selectedCountry.capital}`;
+
+    const bordersArray = [];
+    selectedCountry.borders.forEach(function (border) {
+      countries.forEach(function (country) {
+        if(country.alpha3Code === border){
+          bordersArray.push(country.name);
+      }
+        return bordersArray;
+    })
+    })
+
+    const borders = document.createElement('li');
+    borders.innerText = bordersArray;
 
     ul.appendChild(name);
     ul.appendChild(population);
     ul.appendChild(capital);
+    ul.appendChild(borders);
 
 
     const jsonString = JSON.stringify(selectedCountry);
