@@ -9,10 +9,6 @@ const app = function(){
     }
 
     showCountriesButton.addEventListener("click", getCountriesButtonClicked);
-
-    // const selectCountry = document.querySelector('select');
-    // selectCountry.addEventListener('change', handleSelectChanged);
-
 }
 
 const makeRequest = function (url, callback) {
@@ -56,15 +52,23 @@ const populateDropdown = function (countries) {
   });
 
   const handleSelectChanged = function () {
-    console.log(countries);
-
-    const pTag = document.getElementById("country-info");
-
     const selectedCountry = countries[this.value];
-    console.log(selectedCountry);
+
+    const ul = document.getElementById("country-info");
+    const name = document.createElement('li');
+    name.innerText = `Country name: ${selectedCountry.name}`
+    const population = document.createElement('li');
+    population.innerText = `Population: ${selectedCountry.population}`;
+    const capital = document.createElement('li');
+    capital.innerText = `Capital City: ${selectedCountry.capital}`;
+
+    ul.appendChild(name);
+    ul.appendChild(population);
+    ul.appendChild(capital);
 
 
-    pTag.innerText = `Country name: ${selectedCountry.name}  Population: ${selectedCountry.population}  Capital City: ${selectedCountry.capital}`
+    const jsonString = JSON.stringify(selectedCountry);
+    localStorage.setItem('last country', jsonString);
   }
   dropdown.addEventListener('change', handleSelectChanged);
 
