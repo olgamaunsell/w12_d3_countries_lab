@@ -55,10 +55,11 @@ const populateDropdown = function (countries) {
     const selectedCountry = countries[this.value];
 
     const ul = document.getElementById("country-info");
+    ul.innerHTML = "";
     const name = document.createElement('li');
     name.innerText = `Country name: ${selectedCountry.name}`
     const population = document.createElement('li');
-    population.innerText = `Population ${selectedCountry.population}`;
+    population.innerText = `Population: ${selectedCountry.population}`;
     const capital = document.createElement('li');
     capital.innerText = `Capital City: ${selectedCountry.capital}`;
 
@@ -73,7 +74,7 @@ const populateDropdown = function (countries) {
     })
 
     const borders = document.createElement('li');
-    borders.innerText = bordersArray;
+    borders.innerText = "Borders: " + bordersArray;
 
     ul.appendChild(name);
     ul.appendChild(population);
