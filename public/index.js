@@ -10,13 +10,8 @@ const app = function(){
 
     showCountriesButton.addEventListener("click", getCountriesButtonClicked);
 
-    // const dropdown = document.querySelector("select");
-    // const option = document.createElement('option');
-    // const countries =
-    // option.innerText =
-    //
-    // dropdown.appendChild(option);
-
+    // const selectCountry = document.querySelector('select');
+    // selectCountry.addEventListener('change', handleSelectChanged);
 
 }
 
@@ -53,12 +48,24 @@ const populateDropdown = function (countries) {
   // console.log(countries);
   const dropdown = document.querySelector("select");
 
-  countries.forEach(function (country) {
+  countries.forEach(function (country, index) {
     const option = document.createElement("option");
+    option.value = index;
     option.innerText = country.name;
     dropdown.appendChild(option);
   });
+
+  const handleSelectChanged = function () {
+    console.log(countries);
+    // const pTag = document.getElementById("country-info");
+    // const countrySelected = this.value;
+    // pTag.innerText = countrySelected;
+  }
+  dropdown.addEventListener('change', handleSelectChanged);
 }
+
+
+
 
 
 
