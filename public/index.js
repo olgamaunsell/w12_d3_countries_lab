@@ -57,11 +57,17 @@ const populateDropdown = function (countries) {
 
   const handleSelectChanged = function () {
     console.log(countries);
-    // const pTag = document.getElementById("country-info");
-    // const countrySelected = this.value;
-    // pTag.innerText = countrySelected;
+
+    const pTag = document.getElementById("country-info");
+
+    const selectedCountry = countries[this.value];
+    console.log(selectedCountry);
+
+
+    pTag.innerText = `Country name: ${selectedCountry.name}  Population: ${selectedCountry.population}  Capital City: ${selectedCountry.capital}`
   }
   dropdown.addEventListener('change', handleSelectChanged);
+
 }
 
 
